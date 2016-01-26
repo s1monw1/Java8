@@ -15,10 +15,10 @@ public class MethodenReferenzen {
     public static void main(String[] args) {
         final List<String> names = Arrays.asList("Uwe", "Christoph", "Daniela", "Mandy");
         Collections.sort(names, (o1, o2) -> Integer.compare(o1.length(), o2.length()));
-        //Methodenreferenz
 
+        //Methodenreferenz
         List<String> filtered = filter(n -> isGreater3(n), names);
-        filtered = filter(MethodenReferenzen::isGreater3, names);
+//        List<String> filtered = filter(MethodenReferenzen::isGreater3, names);
         filtered.forEach(System.out::println);
 
     }
@@ -27,13 +27,13 @@ public class MethodenReferenzen {
         return n.length() > 3;
     }
 
-    static <T> List<T> filter(Predicate<T> predicate, List<T> source) {
-        List<T> destiny = new ArrayList<>();
+    private static <T> List<T> filter(Predicate<T> predicate, List<T> source) {
+        List<T> dest = new ArrayList<>();
         for (T item : source) {
             if (predicate.test(item)) {
-                destiny.add(item);
+                dest.add(item);
             }
         }
-        return destiny;
+        return dest;
     }
 }

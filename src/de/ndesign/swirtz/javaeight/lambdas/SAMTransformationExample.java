@@ -13,12 +13,12 @@ public class SAMTransformationExample {
         //Diamond nicht möglich für Anonyme Innere Klasse
         Comparator<String> compareByLength = new Comparator<String>() {
             @Override
-            public int compare(String o1, String o2) {
-                final int l1 = o1.length();
-                final int l2 = o2.length();
+            public int compare(final String o1, final String o2) {
+                final int len1 = o1.length();
+                final int len2 = o2.length();
 
-                if (l1 < l2) return -1;
-                if (l1 > l2) return 1;
+                if (len1 < len2) return -1;
+                if (len1 > len2) return 1;
                 return 0;
 
                 //Seit JDK 7:
@@ -26,7 +26,8 @@ public class SAMTransformationExample {
             }
         };
 
-        Comparator<String> compareByLengthLambda2 = (final String o1, final String o2) -> {
+
+        Comparator<String> compareByLengthLambda = (final String o1, final String o2) -> {
             return Integer.compare(o1.length(), o2.length());
         };
 

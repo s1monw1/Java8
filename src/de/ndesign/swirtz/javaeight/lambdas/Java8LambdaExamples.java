@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * @author: Simon
@@ -24,8 +25,8 @@ public class Java8LambdaExamples {
         System.out.println(names);
 
         //Default-Methoden im Einsatz
-//        Consumer<String> stringConsumer = n -> System.out.println("Länge von " + n + ": " + n.length());
-//        names.forEach(stringConsumer.andThen(n->System.out.println("Aufruf default-Methode aus Consumer")));
+        Consumer<String> stringConsumer = n -> System.out.println("Länge von " + n + ": " + n.length());
+        names.forEach(stringConsumer.andThen(n -> System.out.println("Aufruf default-Methode aus Consumer")));
 
     }
 
