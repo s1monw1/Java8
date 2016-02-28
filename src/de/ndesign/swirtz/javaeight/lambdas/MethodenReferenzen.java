@@ -17,8 +17,8 @@ public class MethodenReferenzen {
         Collections.sort(names, (o1, o2) -> Integer.compare(o1.length(), o2.length()));
 
         //Methodenreferenz
-        List<String> filtered = filter(n -> isGreater3(n), names);
-//        List<String> filtered = filter(MethodenReferenzen::isGreater3, names);
+//        List<String> filtered = filter(n -> isGreater3(n), names);
+        List<String> filtered = filter(MethodenReferenzen::isGreater3, names);
         filtered.forEach(System.out::println);
 
     }
