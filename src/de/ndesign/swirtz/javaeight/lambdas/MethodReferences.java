@@ -10,7 +10,7 @@ import java.util.function.Predicate;
  * @author: Simon
  * created on 20.01.2016.
  */
-public class MethodenReferenzen {
+public class MethodReferences {
 
     public static void main(String[] args) {
         final List<String> names = Arrays.asList("Uwe", "Christoph", "Daniela", "Mandy");
@@ -18,7 +18,7 @@ public class MethodenReferenzen {
 
         //Methodenreferenz
 //        List<String> filtered = filter(n -> isGreater3(n), names);
-        List<String> filtered = filter(MethodenReferenzen::isGreater3, names);
+        List<String> filtered = filter(MethodReferences::isGreater3, names);
         filtered.forEach(System.out::println);
 
     }
