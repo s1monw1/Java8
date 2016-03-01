@@ -17,16 +17,15 @@ import java.util.stream.Stream;
  * @author: Simon
  * created on 28.02.2016.
  */
-public class IntermediateOperationsExample {
+public class StreamUsageExample {
 
     public static void main(String[] args) throws IOException {
         final Path exampleFile = Paths.get("res/stream_example.txt");
-        final List<String> contents = Files.readAllLines(exampleFile);
-        System.out.println(contents);
+        final List<String> allLines = Files.readAllLines(exampleFile);
+        System.out.println(allLines);
 
         //Streamerzeugung
-        Stream<String> words = contents.stream();
-        words = words.flatMap(l -> Stream.of(l.split(" ")));
+        Stream<String> words = allLines.stream().flatMap(l -> Stream.of(l.split(" ")));
 //        words.forEach(System.out::println);
 
         //Prädikate für zu kurze Wörter
@@ -44,7 +43,7 @@ public class IntermediateOperationsExample {
                 map(String::trim).
                 filter(notShortWord).
                 filter(isSignificantWord);
-
+//        filteredWords.forEach(System.out::println);
         final Function<String, String> removePunctuationMarks = s -> {
             if (s.endsWith(".") || s.endsWith(":") || s.endsWith("!")) {
                 return s.substring(0, s.length() - 1);
@@ -52,8 +51,9 @@ public class IntermediateOperationsExample {
             return s;
         };
         final Stream<String> mapped = filteredWords.map(removePunctuationMarks);
+//        mapped.forEach(System.out::println);
         final Stream<String> sorted = mapped.sorted(String.CASE_INSENSITIVE_ORDER);
-//        sorted.forEach(it -> System.out.print(it + ", "));
+//        sorted.forEach(System.out::println);
 
         //Fortsetzung
 
@@ -61,7 +61,7 @@ public class IntermediateOperationsExample {
         Function<String, String> identity = Function.identity();
         Map<String, Long> grouped = sorted.
                 collect(Collectors.groupingBy(identity, Collectors.counting()));
-        //Sortierung der schlüssel anhand TreeMap<K,V>
+        //Sortierung der Schlüssel anhand TreeMap<K,V>
         Map<String, Long> sortedResult = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         sortedResult.putAll(grouped);
         System.out.println(sortedResult);

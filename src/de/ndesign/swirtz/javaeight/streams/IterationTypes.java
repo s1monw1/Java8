@@ -1,6 +1,6 @@
 package de.ndesign.swirtz.javaeight.streams;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -34,10 +34,12 @@ public class IterationTypes {
 
     public static void main(String[] args) {
         //Externe Iteration
-        List<Figure> figures = new ArrayList<>();
-        for (int i = 0; i < 5; i++) figures.add(new Figure());
+        List<Figure> figures = Arrays.asList(
+                new Figure(), new Figure(), new Figure(), new Figure(), new Figure());
         brightenFigures(figures);
-        for (Figure f : figures) System.out.println(f);
+        for (Figure f : figures) {
+            System.out.println(f);
+        }
 
         //Interne Iteration
         process(figures, Figure::resize);

@@ -1,4 +1,4 @@
-package de.ndesign.swirtz.javaeight.streams;
+package de.ndesign.swirtz.javaeight.streams.pojo;
 
 import java.time.LocalDate;
 

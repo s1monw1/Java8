@@ -1,5 +1,7 @@
 package de.ndesign.swirtz.javaeight.streams;
 
+import de.ndesign.swirtz.javaeight.streams.pojo.Person;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
